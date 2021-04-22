@@ -104,11 +104,14 @@ class Airplane {
     drive(distance) {
       this.odometer = distance + this.odometer;
       this.tank = this.tank - distance / this.milesPerGallon;
+      if(this.tank === 0) {
+        return `I ran out of fuel at ${this.odometer} miles!`;
+      }
     };
   }
   
 const pontiac = new Car('pontiac', 28);
-pontiac.fill(5);
+pontiac.fill(1);
 pontiac.drive(50);
 
 console.log(pontiac.tank);
@@ -127,7 +130,14 @@ console.log(pontiac.tank);
           + {name} and {location} of course come from the instance's own properties.
   */
  class Lambdasian {
-    
+    constructor(attrs){
+      this.name = attrs.name;
+      this.age = attrs.age;
+      this.location = attrs.location;
+    }
+    speak(){
+      return `${this.name} and ${this.location} of course come from the instance's own properties`;
+    }
   }
   
   /*
