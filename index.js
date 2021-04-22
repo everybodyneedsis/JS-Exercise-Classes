@@ -42,8 +42,40 @@ class Airplane {
   */
   
  class Person {
-    
+   constructor(name, age) {
+     this.name = name;
+     this.age = age;
+     this.stomach = [];
+   }
+   eat(edible) {
+    if(this.stomach < 10) {
+      this.stomach.push(edible);
+    } 
+   };
+    poop() {
+      this.stomach = [];
+    };
+    toString() {
+      return `${this.name}, ${this.age}`;
+    };
   }
+
+  const jacob = new Person('Jacob', 28);
+
+  jacob.eat('Pizza');
+  jacob.eat('Salami');
+  jacob.eat('Sushi');
+  jacob.eat('Indian');
+  jacob.eat('Tacos');
+  jacob.eat('Pasta');
+  jacob.eat('Italian');
+  jacob.eat('Seafood');
+  jacob.eat('Apples');
+  jacob.eat('Breakfast');
+  jacob.eat('Sandwich');
+  jacob.eat('Sardines');
+
+  console.log(jacob.stomach);
   
   /*
     TASK 2
@@ -60,9 +92,31 @@ class Airplane {
   */
   
  class Car {
-    
+    constructor(model, milesPerGallon) {
+      this.model = model;
+      this.milesPerGallon = milesPerGallon;
+      this.tank = 0;
+      this.odometer = 0;
+    }
+    fill(gallons) {
+      this.tank = gallons + this.tank;
+    };
+    drive(distance) {
+      this.odometer = distance + this.odometer;
+      this.tank = this.tank - this.milesPerGallon * 0.1;
+      if(this.tank === 0) {
+        return `I ran out of fuel at ${this.tank} miles!`;
+      }
+    };
   }
   
+const pontiac = new Car('pontiac', 28);
+pontiac.fill(30);
+pontiac.drive(50);
+
+console.log(pontiac.tank);
+
+
   /*
     TASK 3
       - Write a Lambdasian class.
