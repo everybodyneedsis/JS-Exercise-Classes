@@ -103,15 +103,12 @@ class Airplane {
     };
     drive(distance) {
       this.odometer = distance + this.odometer;
-      this.tank = this.tank - this.milesPerGallon * 0.1;
-      if(this.tank === 0) {
-        return `I ran out of fuel at ${this.tank} miles!`;
-      }
+      this.tank = this.tank - distance / this.milesPerGallon;
     };
   }
   
 const pontiac = new Car('pontiac', 28);
-pontiac.fill(30);
+pontiac.fill(5);
 pontiac.drive(50);
 
 console.log(pontiac.tank);
